@@ -2,10 +2,17 @@ name: Publish delegations metadata to S3 bucket
 
 on:
     workflow_dispatch:
+        inputs:
+            invalidate:
+                description: "Invalidate AWS Cache"
+                required: true
+                type: boolean
+                default: "true"
 
 env:
   BUCKET_NAME: "s3://commontorizon.dev/ostree-repo/"
   AWS_REGION: "eu-central-1"
+  INVALIDATE: "${{ inputs.invalidate }}"
 
 permissions:
     id-token: write   # This is required for requesting the JWT
@@ -35,3 +42,9 @@ jobs:
         printf '%s' "$PRIVKEY" > "$SIGNING_PRIVKEY"
         sign-and-push-delegations.sh
         rm -rf "$SIGNING_PRIVKEY" "$SIGNING_PUBKEY"
+    - name: Invalidate AWS cache to update delegation files quicker
+      run: |
+        if [[ ${{ env.INVALIDATE }} == true  ]]; \
+        then aws cloudfront create-invalidation --distribution-id EBNYYAS1EQCTR --paths \
+        "/commontorizon.dev/delegations/tdx-common.json" "/commontorizon.dev/delegations/add-tdx-common.json"; \
+        else echo "Cache Invalidation Disabled"; fi
