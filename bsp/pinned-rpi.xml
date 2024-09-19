@@ -3,13 +3,13 @@
 <manifest>
 
     <remote
-        fetch="https://github.com/agherzan/"
+        fetch="https://github.com/agherzan"
         name="agh"/>
 
     <project
         name="meta-raspberrypi"
         path="layers/meta-raspberrypi"
         remote="agh"
-        revision="70c293b25f218550354ca3615780eab98afe9f07"/>
+        revision="d7544f35756d87834e8b4bf3e3e733c771d380ae"/>
 
 </manifest>

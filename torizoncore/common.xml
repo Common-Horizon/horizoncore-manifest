@@ -29,43 +29,43 @@
         name="yocto-docs"
         path="layers/yocto-docs"
         remote="yocto"
-        revision="08fda7a5601393617b1ecfe89229459e14a90b1d" />
+        revision="512025edd9b3b6b8d0938b35bb6188c9f3b7f17d" />
 
     <project
         name="meta-security"
         path="layers/meta-security"
         remote="yocto"
-        revision="1a3e42cedbd94ca73be45800d0e902fec35d0f0f" />
+        revision="353078bc06c8b471736daab6ed193e30d533d1f1" />
 
     <project
         name="meta-updater"
         path="layers/meta-updater"
         remote="uptane"
-        revision="6c4feab2db70cb0c8ddce7e18dc7b851ad475b32" />
+        revision="167ded88c9747584f19251ea5665b9074746a05c" />
 
     <project
         name="meta-virtualization"
         path="layers/meta-virtualization"
         remote="yocto"
-        revision="cb2bc17e96552cdfc141d27bd9f4dbd95a872846" />
+        revision="e0cd09e3b8367e2745a27db2e7ff1f8452c8cf41" />
 
     <project
         name="meta-toradex-distro.git"
         path="layers/meta-toradex-distro"
         remote="tdx"
-        revision="7212583d894bbf5501fb1ff20c131ce485b4e4b7" />
+        revision="b583759d5fc023d36807d92771ea9dbf84517b3c" />
 
     <project
         name="meta-toradex-security"
         path="layers/meta-toradex-security"
         remote="toradex-torizon"
-        revision="ccf16bfcf71c7dce5efad3b39578fe5326de833c" />
+        revision="c05a06c4283beb2ad36e08d22d97eee3d52778f3" />
 
     <project
         name="meta-common-torizon"
         path="layers/meta-common-torizon"
         remote="cmt"
-        revision="91243092003905691ef71813dbffc0ca3148c376">
+        revision="4facffb781d58f9dc2c1b89a4821b2c9ebf0dd4c">
 
         <linkfile
             dest="setup-environment"

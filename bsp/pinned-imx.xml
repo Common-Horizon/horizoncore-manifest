@@ -40,27 +40,27 @@
         name="meta-browser"
         path="layers/meta-imx/meta-browser"
         remote="OSSystems"
-        revision="e232c2e21b96dc092d9af8bea4b3a528e7a46dd6" />
+        revision="c512ef2c1a7dcf0df41253499bc6618b2c816507" />
 
     <project
         name="meta-clang"
         path="layers/meta-imx/meta-clang"
         remote="clang"
-        revision="c728c3f9168c8a4ed05163a51dd48ca1ad8ac21d"
+        revision="8bc893d735e5f779a2dcdc3992621d5ab371800d"
         upstream="kirkstone" />
 
     <project
         name="meta-freescale"
         path="layers/meta-imx/meta-freescale"
         remote="community"
-        revision="c82d4634e7aba8bc0de73ce1dfc997b630051571"
+        revision="c525e0c19bdc46d45f71873b5f286f49abb69418"
         upstream="kirkstone" />
 
     <project
         name="meta-freescale-3rdparty"
         path="layers/meta-imx/meta-freescale-3rdparty"
         remote="community"
-        revision="5977197340c7a7db17fe3e02a4e014ad997565ae"
+        revision="9e94b64bdfebcf7bfdf2af6447cec866a4efa814"
         upstream="kirkstone" />
 
     <project
@@ -74,7 +74,7 @@
         name="meta-imx"
         path="layers/meta-imx/meta-imx"
         remote="nxp-imx"
-        revision="refs/tags/rel_imx_5.15.71_2.2.2"
+        revision="ca68ab5d25322b51f54564275c84ab8de3c74ea6"
         upstream="kirkstone-5.15.71-2.2.2" />
 
     <project
@@ -88,35 +88,35 @@
         name="meta-openembedded"
         path="layers/meta-imx/meta-openembedded"
         remote="oe"
-        revision="744a4b6eda88b9a9ca1cf0df6e18be384d9054e3"
+        revision="9a24b7679810628b594cc5a9b52f77f53d37004f"
         upstream="kirkstone" />
 
     <project
         name="meta-qt6"
         path="layers/meta-imx/meta-qt6"
         remote="QT6"
-        revision="ed785a25d12e365d1054700d4fc94a053176eb14"
-        upstream="6.3" />
+        revision="96e8095eca02aa454f59a1094692006c71eec9de"
+        upstream="6.8" />
 
     <project
         name="meta-timesys"
         path="layers/meta-imx/meta-timesys"
         remote="Timesys"
-        revision="d1ad27bfacc937048e7f9084b17f4d7c917d2004"
+        revision="c2f65e99c8ac3001452a2c436a4a22413d2f95ef"
         upstream="master" />
 
     <project
         name="meta-virtualization"
         path="layers/meta-imx/meta-virtualization"
         remote="yocto"
-        revision="9482648daf0bb42ff3475e7892542cf99f3b8d48"
+        revision="e0cd09e3b8367e2745a27db2e7ff1f8452c8cf41"
         upstream="master" />
 
     <project
         name="poky"
         path="layers/meta-imx/poky"
         remote="yocto"
-        revision="24a3f7b3648185e33133f5d96b184a6cb6524f3d"
+        revision="e938b18b5342bd28eadb44ad39dbf1f5cf5be09b"
         upstream="kirkstone" />
 
 </manifest>

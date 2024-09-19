@@ -20,7 +20,7 @@
     <project name="meta-freescale.git"
              path="layers/meta-freescale"
              remote="githf"
-             revision="fb17bfb8edcc9560bc1beb966a68f1f4c08ecfb3"
+             revision="c525e0c19bdc46d45f71873b5f286f49abb69418"
              upstream="kirkstone" />
 
 </manifest>

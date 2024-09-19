@@ -6,6 +6,6 @@
         name="meta-intel"
         path="layers/meta-intel"
         remote="yocto"
-        revision="bb7c7b0f448ab6541ab42a316dfeff1f7726252f" />
+        revision="2987c58ee2fcc077dcfb266d3f9ed882d3be2c68" />
 
 </manifest>
