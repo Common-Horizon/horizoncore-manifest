@@ -206,6 +206,29 @@
             ]
         },
         {
+            "label": "build-auto",
+            "hide": true,
+            "detail": "",
+            "command": "startup-tdx.sh",
+            "type": "shell",
+            "options": {
+                "cwd": "/workdir/torizon",
+                "env": {
+                    "CMD": ""
+                }
+            },
+            "args": [
+                "build-torizon"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "icon": {
+                "id": "primitive-dot",
+                "color": "terminal.ansiYellow"
+            }
+        },
+        {
             "label": "build-container",
             "detail": "",
             "command": "startup-tdx.sh",

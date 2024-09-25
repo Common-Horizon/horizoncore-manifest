@@ -53,6 +53,12 @@ then
     MACHINE=$MACHINE source setup-environment
 else
     DISTRO=$DISTRO MACHINE=$MACHINE source setup-environment
+
+    if [ $? -ne 0 ]
+    then
+        echo "Error setting up environment"
+        exit $?
+    fi
 fi
 
 # Only start build if requested

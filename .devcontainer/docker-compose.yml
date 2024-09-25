@@ -1,29 +1,61 @@
-version: "3.9"
 services:
-  crops-torizon:
+  crops-common-torizon:
     build:
       context: .
       dockerfile: Dockerfile
-    image: crops-torizon:latest
-    container_name: crops-common-torizon
+    image: crops-commontorizon:latest
+    container_name: crops-commontorizon
     network_mode: host
     privileged: true
     user: usersetup
-    stdin_open: true
-    tty: true
-    command: bash
-    attach: false
+    command: >
+      pwsh -c "
+        git config --global user.email 'common@torizon' &&
+        git config --global user.name 'common@torizon' &&
+        git config --global color.ui false &&
+        ./.vscode/tasks.ps1 run repo-init &&
+        ./.vscode/tasks.ps1 run repo-sync &&
+        ./.vscode/tasks.ps1 run build-auto
+      "
     working_dir: /workspaces/commontorizon-manifest
     volumes:
-      - ../../workdir:/workdir
+      - ${WORKDIR}:/workdir
       - ../:/workspaces/commontorizon-manifest
       - /var/run/docker.sock:/var/run/docker.sock
       - /dev:/dev
     environment:
       - EULA=1
       - ACCEPT_FSL_EULA=1
-      - MACHINE=raspberrypi4-64
+      - MACHINE=${MACHINE}
       - DISTRO=torizon
-      - IMAGE=common-torizon-core-docker-dev
+      - IMAGE=${IMAGE}
+      - GIT_AUTHOR_EMAIL=common@torizon
+      - GIT_AUTHOR_COMMITTER=common@torizon
+
+  crops-common-torizon-debug:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: crops-commontorizon:latest
+    container_name: crops-commontorizon
+    network_mode: host
+    privileged: true
+    user: usersetup
+    stdin_open: true
+    tty: true
+    command: pwsh
+    attach: false
+    working_dir: /workspaces/commontorizon-manifest
+    volumes:
+      - ${WORKDIR}:/workdir
+      - ../:/workspaces/commontorizon-manifest
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /dev:/dev
+    environment:
+      - EULA=1
+      - ACCEPT_FSL_EULA=1
+      - MACHINE=${MACHINE}
+      - DISTRO=torizon
+      - IMAGE=${IMAGE}
       - GIT_AUTHOR_EMAIL=common@torizon
       - GIT_AUTHOR_COMMITTER=common@torizon
