@@ -70,7 +70,7 @@ jobs:
         repo sync
         MACHINE=${{ env.MACHINE }} EULA=1 source setup-environment
         grep -qxF 'TDX_PURPOSE = "Release"' conf/local.conf || echo 'TDX_PURPOSE = "Release"' >> conf/local.conf
-        bitbake torizon-core-docker
+        bitbake torizon-core-common-docker
     - name: Create tar archive of artifacts
       run: |
         tar -cvf ${{ env.MACHINE }}-artifacts.tar -C /workdir/build-*/deploy/images/${{ env.MACHINE }}/ .
