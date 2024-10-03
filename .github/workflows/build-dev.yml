@@ -66,7 +66,7 @@ jobs:
         repo init -u https://github.com/commontorizon/commontorizon-manifest.git -b ${{ env.BRANCH }} -m torizoncore/${{ env.MANIFEST }}
         repo sync
         MACHINE=${{ env.MACHINE }} EULA=1 source setup-environment
-        sed -i '/TDX_IMAGE = ".*"/c\TDX_IMAGE = "torizon-core-common-docker-dev" conf/local.conf
+        sed -i '/TDX_IMAGE = ".*"/c\TDX_IMAGE = "torizon-core-common-docker-dev"' conf/local.conf
         sed -i '/#TDX_DEBUG ?= "0"/c\TDX_DEBUG = "1"' conf/local.conf
         bitbake torizon-core-common-docker-dev
     - name: Create tar archive of artifacts
