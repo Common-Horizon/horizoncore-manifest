@@ -1,0 +1,79 @@
+name: Yocto build dev image
+
+on:
+    workflow_dispatch:
+        inputs:
+            machine:
+                description: "Hardware machine"
+                required: true
+                type: choice
+                options:
+                    - apalis-imx6
+                    - apalis-imx8
+                    - beaglebone-yocto
+                    - beagleplay
+                    - colibri-imx6
+                    - colibri-imx6ull-emmc
+                    - colibri-imx7-emmc
+                    - colibri-imx8x
+                    - genericx86-64
+                    - intel-corei7-64
+                    - nezha-allwinner-d1
+                    - qemuarm64
+                    - qemux86-64
+                    - raspberrypi0-2w-64
+                    - raspberrypi0-wifi
+                    - raspberrypi3-64
+                    - raspberrypi4-64
+                    - verdin-am62
+                    - verdin-imx8mm
+                    - verdin-imx8mp
+            branch:
+                description: "Manifest repo branch to use"
+                required: true
+                type: choice
+                options:
+                    - kirkstone
+                    - master
+                    - nanbield
+            manifest:
+                description: "Manifest file to use"
+                required: true
+                type: choice
+                options:
+                    - common.xml
+                    - default.xml
+                    - integration.xml
+                    - next.xml
+
+env:
+  MACHINE: "${{ inputs.machine }}"
+  BRANCH: "${{ inputs.branch }}"
+  MANIFEST: "${{ inputs.manifest }}"
+
+permissions:
+    id-token: write   # This is required for requesting the JWT
+    contents: read    # This is required for actions/checkout
+
+jobs:
+  build-yocto:
+    runs-on: [self-hosted, linux, x64, yocto]
+    steps:
+    - name: Build Yocto image
+      working-directory: /workdir
+      run: |
+        rm -rf * .repo
+        repo init -u https://github.com/commontorizon/commontorizon-manifest.git -b ${{ env.BRANCH }} -m torizoncore/${{ env.MANIFEST }}
+        repo sync
+        MACHINE=${{ env.MACHINE }} EULA=1 source setup-environment
+        sed -i '/TDX_IMAGE = ".*"/c\TDX_IMAGE = "torizon-core-common-docker-dev" conf/local.conf
+        sed -i '/#TDX_DEBUG ?= "0"/c\TDX_DEBUG = "1"' conf/local.conf
+        bitbake torizon-core-common-docker-dev
+    - name: Create tar archive of artifacts
+      run: |
+        tar -cvf ${{ env.MACHINE }}-artifacts.tar -C /workdir/build-*/deploy/images/${{ env.MACHINE }}/ .
+    - name: Upload Yocto artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ env.MACHINE }}-artifacts
+        path: ${{ env.MACHINE }}-artifacts.tar
